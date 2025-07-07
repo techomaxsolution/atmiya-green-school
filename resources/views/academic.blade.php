@@ -45,7 +45,7 @@
                     <tr>
                         <th scope="row">2</th>
                         <td>ANNUAL ACADEMIC CALANDER  </td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/Yearly Planner.pdf')}}" target="_blank">Download</a></td>
+                        <td><a href="{{ route('flipbook.yearly_planner') }}" target="_blank">View Flipbook</a></td>
 
                     </tr>
                     <tr>

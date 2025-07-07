@@ -51,6 +51,9 @@ Route::controller(FrontendController::class)->group(function () {
 //Route::get('/', function () {
 //    return view('index');
 //});
+Route::get('/flipbook/yearly-planner', function () {
+    return view('flipbook.yearly_planner');
+})->name('flipbook.yearly_planner');
 
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
