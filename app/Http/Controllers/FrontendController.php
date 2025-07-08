@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Models\Faculty;
 use App\Models\GeneralInformation;
 use App\Models\Magazine;
+use App\Models\SchoolInfrastructure;
 use App\Models\TeachingStaff;
 use App\Models\Testimonials;
 use Carbon\Carbon;
@@ -246,8 +247,10 @@ class FrontendController extends Controller
         return view('generalinformationofschool', compact('generalInformation'));
     }
 
-    public function schoolinfrastructure(){
-        return view('schoolinfrastructure');
+    public function schoolinfrastructure()
+    {
+        $schoolInfrastructure = SchoolInfrastructure::latest()->get();
+        return view('schoolinfrastructure', compact('schoolInfrastructure'));
     }
 
     public function admin(){

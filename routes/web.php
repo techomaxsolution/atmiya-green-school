@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\SchoolInfrastructureController;
 use App\Http\Controllers\TeachingStaffController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +157,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('admin.teaching-staff.edit');
         Route::put('update/{id}', 'update')->name('admin.teaching-staff.update');
         Route::delete('delete/{id}', 'destroy')->name('admin.teaching-staff.delete');
+    });
+
+    Route::prefix('school-infrastructure')->controller(SchoolInfrastructureController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.school-infrastructure.index');
+        Route::get('create', 'create')->name('admin.school-infrastructure.create');
+        Route::post('store', 'store')->name('admin.school-infrastructure.store');
+        Route::get('edit/{id}', 'edit')->name('admin.school-infrastructure.edit');
+        Route::put('update/{id}', 'update')->name('admin.school-infrastructure.update');
+        Route::delete('delete/{id}', 'destroy')->name('admin.school-infrastructure.delete');
     });
 
     Route::prefix('magazine')->controller(MagazineController::class)->group(function () {
