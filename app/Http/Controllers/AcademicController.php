@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DocumentInformation;
+use App\Models\Academic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use JsonException;
 
-class DocumentInformationController extends Controller
+class AcademicController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $documentInformation = DocumentInformation::latest()->get();
-        return view('admin.document-information.index', compact('documentInformation'));
+        $academics = Academic::latest()->get();
+        return view('admin.academics.index', compact('academics'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DocumentInformationController extends Controller
      */
     public function create()
     {
-        return view('admin.document-information.create');
+        return view('admin.academics.create');
     }
 
     /**
@@ -53,18 +53,18 @@ class DocumentInformationController extends Controller
             }
         }
 
-        $documentInformation = DocumentInformation::create([
+        $academics = Academic::create([
             'description' => $request->description,
             'files' => json_encode($files, JSON_THROW_ON_ERROR),
         ]);
 
-        if ($documentInformation) {
-            Session::flash('success', 'Document Information created successfully.');
-            return redirect()->route('admin.document-information.index');
+        if ($academics) {
+            Session::flash('success', 'Academic created successfully.');
+            return redirect()->route('admin.academics.index');
         }
 
-        Session::flash('error', 'Document Information creation error!');
-        return redirect()->route('admin.document-information.create');
+        Session::flash('error', 'Academic creation error!');
+        return redirect()->route('admin.academics.create');
     }
 
     /**
@@ -80,8 +80,8 @@ class DocumentInformationController extends Controller
      */
     public function edit(string $id)
     {
-        $documentInformation = DocumentInformation::where('id', $id)->first();
-        return view('admin.document-information.edit', compact('documentInformation'));
+        $academic = Academic::where('id', $id)->first();
+        return view('admin.academics.edit', compact('academic'));
     }
 
     /**
@@ -95,13 +95,13 @@ class DocumentInformationController extends Controller
             'files.*' => 'nullable|file|mimes:pdf,doc,docx',
         ]);
 
-        $existingDocumentInformation = DocumentInformation::where('id', $id)->firstOrFail();
+        $existingAcademic = Academic::where('id', $id)->firstOrFail();
 
         $newFiles = [];
 
         if ($request->hasFile('files')) {
-            if ($existingDocumentInformation->files) {
-                $oldFiles = json_decode($existingDocumentInformation->files, true, 512, JSON_THROW_ON_ERROR);
+            if ($existingAcademic->files) {
+                $oldFiles = json_decode($existingAcademic->files, true, 512, JSON_THROW_ON_ERROR);
                 foreach ($oldFiles as $file) {
                     $filePath = str_replace('/storage/', 'public/', $file);
                     Storage::delete($filePath);
@@ -117,18 +117,18 @@ class DocumentInformationController extends Controller
             }
         }
 
-        $documentInformation = DocumentInformation::where('id', $id)->update([
+        $academics = Academic::where('id', $id)->update([
             'description' => $request->description,
             'files' => json_encode($newFiles, JSON_THROW_ON_ERROR),
         ]);
 
-        if ($documentInformation) {
-            Session::flash('success', 'Document Information updated successfully.');
-            return redirect()->route('admin.document-information.index');
+        if ($academics) {
+            Session::flash('success', 'Academic updated successfully.');
+            return redirect()->route('admin.academics.index');
         }
 
-        Session::flash('error', 'Document Information update error!');
-        return redirect()->route('admin.document-information.edit', $id);
+        Session::flash('error', 'Academic update error!');
+        return redirect()->route('admin.academics.edit', $id);
     }
 
     /**
@@ -137,21 +137,21 @@ class DocumentInformationController extends Controller
      */
     public function destroy(string $id): JsonResponse
     {
-        $documentInformation = DocumentInformation::where('id', $id)->firstOrFail();
+        $academics = Academic::where('id', $id)->firstOrFail();
 
-        if ($documentInformation->files) {
-            $oldFiles = json_decode($documentInformation->files, true, 512, JSON_THROW_ON_ERROR);
+        if ($academics->files) {
+            $oldFiles = json_decode($academics->files, true, 512, JSON_THROW_ON_ERROR);
             foreach ($oldFiles as $file) {
                 $filePath = str_replace('/storage/', 'public/', $file);
                 Storage::delete($filePath);
             }
         }
 
-        $documentInformation->delete();
+        $academics->delete();
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Document Information deleted successfully.',
+            'message' => 'Academic deleted successfully.',
         ]);
     }
 }

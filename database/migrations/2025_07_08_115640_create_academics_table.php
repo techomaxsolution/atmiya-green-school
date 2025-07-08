@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('document_information', static function (Blueprint $table) {
+        Schema::create('academics', static function (Blueprint $table) {
             $table->id();
             $table->text('description')->nullable();
             $table->text('files')->nullable();
@@ -23,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_information');
+        Schema::dropIfExists('academics');
     }
 };

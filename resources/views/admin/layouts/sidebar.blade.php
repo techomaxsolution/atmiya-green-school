@@ -110,6 +110,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('admin.academics.index') }}">
+                            <i class="fas fa-file-pdf"></i>
+                            <p>Academics</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('admin.circular.index') }}">
                             <i class="fas fa-file-pdf"></i>
                             <p>Circular</p>

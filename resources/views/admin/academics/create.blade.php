@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Admin Panel - Edit Document Information')
+@section('title', 'Admin Panel - Add Academics')
 
 @section('content-page')
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="fw-bold mb-3">Document Information</h3>
+                <h3 class="fw-bold mb-3">Academics</h3>
                 <ul class="breadcrumbs mb-3">
                     <li class="nav-home">
                         <a href="{{ route('admin.dashboard') }}">
@@ -17,13 +17,13 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.document-information.index') }}">Document Information</a>
+                        <a href="{{ route('admin.academics.index') }}">Academics</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.document-information.edit', $documentInformation->id) }}">Edit Document Information</a>
+                        <a href="{{ route('admin.academics.create') }}">Add Academics</a>
                     </li>
                 </ul>
             </div>
@@ -31,17 +31,16 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Edit Document Information</div>
+                            <div class="card-title">Add Academics</div>
                         </div>
-                        <form method="POST" action="{{ route('admin.document-information.update', $documentInformation->id) }}" id="documentInformationForm" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.academics.store') }}" id="academicForm" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="description">Description<span style="color: red">*</span></label>
-                                            <input type="text" class="form-control" name="description" id="description" value="{{ $documentInformation->description }}" placeholder="Enter Information" required/>
+                                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description" value="{{ old('description') }}"/>
                                             @error('description')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -50,19 +49,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="files">File<span style="color: red">*</span></label>
-                                            <input type="file" class="form-control" name="files[]" id="files" placeholder="Select File" accept=".pdf,.doc,.docx" multiple/>
-                                            @if($documentInformation->files)
-                                                @foreach(json_decode($documentInformation->files, false, 512, JSON_THROW_ON_ERROR) as $file)
-                                                    @php
-                                                        $extension = pathinfo($file, PATHINFO_EXTENSION);
-                                                    @endphp
-                                                    @if(in_array($extension, ['pdf', 'doc', 'docx']))
-                                                        <a href="{{ asset($file) }}" target="_blank" class="d-block mt-2">
-                                                            View File ({{ strtoupper($extension) }})
-                                                        </a>
-                                                    @endif
-                                                @endforeach
-                                            @endif
+                                            <input type="file" class="form-control" name="files[]" id="files" placeholder="Select File" value="" multiple/>
                                             @error('files[]')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -72,7 +59,7 @@
                             </div>
                             <div class="card-action">
                                 <button class="btn btn-success" type="submit">Submit</button>
-                                <a href="{{ route('admin.document-information.index') }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ route('admin.academics.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     </div>
@@ -96,7 +83,7 @@
                 return param.split('|').indexOf(extension) > -1;
             });
 
-            $('#documentInformationForm').validate({
+            $('#academicForm').validate({
                 rules: {
                     description: {
                         required: true,

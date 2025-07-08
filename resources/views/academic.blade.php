@@ -1,15 +1,17 @@
 @extends('layouts.layout')
-<!-- BANNER STRAT -->
+
 @section('content')
-<div class="banner">
-    <div class="main-banner">
-        <div class="banner-1"> <img src="{{asset('frontend/assets/images/aboutus-b.png')}}" alt="Atmiya">
-            <div class="banner-detail">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="banner-detail-inner align-center">
-                                <h1 class="banner-title">Academics</h1>
+    <!-- BANNER STRAT -->
+    <div class="banner">
+        <div class="main-banner">
+            <div class="banner-1"><img src="{{ asset('frontend/assets/images/aboutus-b.png') }}" alt="Academics">
+                <div class="banner-detail">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="banner-detail-inner align-center">
+                                    <h1 class="banner-title">Academics</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -17,62 +19,48 @@
             </div>
         </div>
     </div>
-</div>
-<!-- BANNER END -->
+    <!-- BANNER END -->
 
-<!-- CONTAIN START -->
-<!--  Site Services Features Block End  -->
-<section class="pb-95" id="sub-banner" >
-    <div class="ser-feature-block">
-        <div class="container">
-            <div class="row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Sr No</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Download / View</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>FEE STRUCTURE OF SCHOOL </td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/Fees Structure.pdf')}}" target="_blank">Download</a></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>ANNUAL ACADEMIC CALANDER  </td>
-                        <td><a href="{{ route('flipbook.yearly_planner') }}" target="_blank">View Flipbook</a></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS  </td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/PTA.pdf')}}" target="_blank">Download</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION AS PERAPPLICABLILITY  </td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/Last 3 Years Result.pdf')}}" target="_blank">Download</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC) </td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/SMC.PDF')}}" target="_blank">Download</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>COPY OF THE Teacher's Details</td>
-                        <td><a href="{{asset('frontend/assets/cbseinfo/documentsandInformation/staff statement.pdf')}}" target="_blank">Download</a></td>
-                    </tr>
-                    </tbody>
-                </table>
+    <!-- CONTAIN START -->
+    <!-- Site Services Features Block End -->
+    <section class="pb-95 pb-180" id="sub-banner">
+        <div class="ser-feature-block">
+            <div class="container">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Sr No</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Download / View</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php($i = 0)
+                        @forelse($academics as $value)
+                            @php($i++)
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $value->description }}</td>
+                                <td>
+                                    @foreach(json_decode($value->files, true, 512, JSON_THROW_ON_ERROR) as $index => $fileUrl)
+                                        <a href="{{ route('academic.download', [$value->id, $index]) }}" target="_blank">
+                                            Download File
+                                        </a>
+                                        <br>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <th scope="row" colspan="3" class="text-center">No Records Found!</th>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
+    <!-- CONTAIN END -->
 @endsection

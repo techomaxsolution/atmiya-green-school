@@ -4,7 +4,7 @@
     <!-- BANNER STRAT -->
     <div class="banner">
         <div class="main-banner">
-            <div class="banner-1"><img src="{{asset('frontend/assets/images/aboutus-b.png')}}" alt="Atmiya">
+            <div class="banner-1"><img src="{{ asset('frontend/assets/images/aboutus-b.png') }}" alt="Documents and information">
                 <div class="banner-detail">
                     <div class="container">
                         <div class="row">
@@ -43,7 +43,7 @@
                                 <th scope="row">{{ $i }}</th>
                                 <td>{{ $value->description }}</td>
                                 <td>
-                                    @foreach(json_decode($value->file, true, 512, JSON_THROW_ON_ERROR) as $index => $fileUrl)
+                                    @foreach(json_decode($value->files, true, 512, JSON_THROW_ON_ERROR) as $index => $fileUrl)
                                         <a href="{{ route('documentsInformation.download', [$value->id, $index]) }}" target="_blank">
                                             Download File
                                         </a>

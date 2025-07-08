@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CircularController;
@@ -33,6 +34,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('about', 'about')->name('frontend.about');
     Route::get('contact', 'contact')->name('frontend.contact');
     Route::get('academic', 'academic')->name('frontend.academic');
+    Route::get('academicDownload/{id}/{fileIndex}', 'academicDownload')->name('academic.download');
     Route::get('gallery', 'gallery')->name('frontend.gallery');
     Route::get('documentsInformation', 'documentsInformation')->name('frontend.documents-information');
     Route::get('documentsInformationDownload/{id}/{fileIndex}', 'documentsInformationDownload')->name('documentsInformation.download');
@@ -127,6 +129,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('admin.document-information.edit');
         Route::put('update/{id}', 'update')->name('admin.document-information.update');
         Route::delete('delete/{id}', 'destroy')->name('admin.document-information.delete');
+    });
+
+    Route::prefix('academics')->controller(AcademicController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.academics.index');
+        Route::get('create', 'create')->name('admin.academics.create');
+        Route::post('store', 'store')->name('admin.academics.store');
+        Route::get('edit/{id}', 'edit')->name('admin.academics.edit');
+        Route::put('update/{id}', 'update')->name('admin.academics.update');
+        Route::delete('delete/{id}', 'destroy')->name('admin.academics.delete');
     });
 
     Route::prefix('circular')->controller(CircularController::class)->group(function () {
