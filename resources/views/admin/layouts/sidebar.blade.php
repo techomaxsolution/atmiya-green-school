@@ -1,4 +1,3 @@
-
 <body>
 
 <div class="wrapper">
@@ -32,7 +31,7 @@
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
             <div class="sidebar-content">
-                <ul class="nav nav-secondary" >
+                <ul class="nav nav-secondary">
                     <li class="nav-item">
                         <a
                             href="{{  route('admin.dashboard') }}"
@@ -60,34 +59,34 @@
                         <div class="collapse" id="masters">
                             <ul class="nav nav-collapse">
 
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.department.index') }}">
-                                            <i class="fas fa-wallet"></i>
-                                            <p>Department</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.faculty.index') }}">
-                                            <i class="fas fa-chalkboard-teacher"></i>
-                                            <p>Faculty</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.activityCategory.index') }}">
-                                            <i class="fas fa-clipboard-list"></i>
-                                            <p>Activity Category</p>
-                                        </a>
-                                    </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.department.index') }}">
+                                        <i class="fas fa-wallet"></i>
+                                        <p>Department</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.faculty.index') }}">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        <p>Faculty</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.activityCategory.index') }}">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        <p>Activity Category</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
 
                     <li class="nav-item">
-                            <a href="{{ route('admin.testimonial.index') }}">
-                                <i class="fas fa-user-check"></i>
-                                <p>Testimonial</p>
-                            </a>
-                        </li>
+                        <a href="{{ route('admin.testimonial.index') }}">
+                            <i class="fas fa-user-check"></i>
+                            <p>Testimonial</p>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route('admin.event.index') }}">
@@ -95,6 +94,14 @@
                             <p>Events</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.general-information.index') }}">
+                            <i class="fas fa-file-pdf"></i>
+                            <p>General Information</p>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('admin.circular.index') }}">
                             <i class="fas fa-file-pdf"></i>
@@ -128,12 +135,12 @@
                             <p>Activity</p>
                         </a>
                     </li>
-{{--                    <li class="nav-item">--}}
-{{--                        <a href="{{ route('admin.setting.index') }}">--}}
-{{--                            <i class="fas fa-users"></i>--}}
-{{--                            <p>Settings</p>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    {{--                    <li class="nav-item">--}}
+                    {{--                        <a href="{{ route('admin.setting.index') }}">--}}
+                    {{--                            <i class="fas fa-users"></i>--}}
+                    {{--                            <p>Settings</p>--}}
+                    {{--                        </a>--}}
+                    {{--                    </li>--}}
                 </ul>
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Models\ActivityCategory;
 use App\Models\Circular;
 use App\Models\Event;
 use App\Models\Faculty;
+use App\Models\GeneralInformation;
 use App\Models\Magazine;
 use App\Models\Testimonials;
 use Carbon\Carbon;
@@ -189,7 +190,8 @@ class FrontendController extends Controller
 
     public function generalInformation()
     {
-        return view('generalinformationofschool');
+        $generalInformation = GeneralInformation::latest()->get();
+        return view('generalinformationofschool', compact('generalInformation'));
     }
 
     public function schoolinfrastructure(){

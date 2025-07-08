@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
@@ -105,6 +106,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('admin.event.edit');
         Route::put('/update/{id}', 'update')->name('admin.event.update');
         Route::delete('/delete/{id}', 'destroy')->name('admin.event.delete');
+    });
+
+    Route::prefix('general-information')->controller(GeneralInformationController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.general-information.index');
+        Route::get('create', 'create')->name('admin.general-information.create');
+        Route::post('store', 'store')->name('admin.general-information.store');
+        Route::get('edit/{id}', 'edit')->name('admin.general-information.edit');
+        Route::put('update/{id}', 'update')->name('admin.general-information.update');
+        Route::delete('delete/{id}', 'destroy')->name('admin.general-information.delete');
     });
 
     Route::prefix('circular')->controller(CircularController::class)->group(function () {
