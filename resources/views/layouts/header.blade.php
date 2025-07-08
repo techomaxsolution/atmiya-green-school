@@ -30,9 +30,13 @@
                                                     <li class="level3"><a href="{{route('frontend.teaching_staff')}}"><span>■</span>Teaching Staff</a></li>
                                                     <li class="level3"><a href="{{route('frontend.schoolInfrastructure')}}"><span>■</span>School
                                                             Infrastructure</a></li>
-                                                    <li class="level3"><a
-                                                            href="{{asset('frontend/assets/cbseinfo/documentsandInformation/mandatorypublicdisclosure.pdf')}}"
-                                                            target="_blank"><span>■</span>Mandatory Public Disclosure</a></li>
+                                                    <li class="level3">
+                                                        @php($mandatoryPublicDisclosure = App\Models\MandatoryPublicDisclosure::first())
+                                                        <a href="{{ asset(json_decode($mandatoryPublicDisclosure->file, false, 512, JSON_THROW_ON_ERROR)) }}" target="_blank">
+                                                            <span>■</span>
+                                                            Mandatory Public Disclosure
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>

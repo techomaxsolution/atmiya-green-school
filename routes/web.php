@@ -12,6 +12,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\MagazineController;
+use App\Http\Controllers\MandatoryPublicDisclosureController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SchoolInfrastructureController;
 use App\Http\Controllers\TeachingStaffController;
@@ -166,6 +167,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('admin.school-infrastructure.edit');
         Route::put('update/{id}', 'update')->name('admin.school-infrastructure.update');
         Route::delete('delete/{id}', 'destroy')->name('admin.school-infrastructure.delete');
+    });
+
+    Route::prefix('mandatory-public-disclosure')->controller(MandatoryPublicDisclosureController::class)->group(function () {
+        Route::get('edit', 'edit')->name('admin.mandatory-public-disclosure.edit');
+        Route::post('update', 'update')->name('admin.mandatory-public-disclosure.update');
     });
 
     Route::prefix('magazine')->controller(MagazineController::class)->group(function () {

@@ -138,6 +138,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('admin.mandatory-public-disclosure.edit') }}">
+                            <i class="fas fa-file-pdf"></i>
+                            <p>Mandatory Public Disclosure</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('admin.magazine.index') }}">
                             <i class="fas fa-book"></i>
                             <p>Magazines</p>

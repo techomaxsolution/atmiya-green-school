@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SchoolInfrastructure extends Model
+class MandatoryPublicDisclosure extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,6 @@ class SchoolInfrastructure extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'information',
-        'details',
+        'file',
     ];
 }
