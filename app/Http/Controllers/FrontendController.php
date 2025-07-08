@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\ActivityCategory;
 use App\Models\Circular;
+use App\Models\DocumentInformation;
 use App\Models\Event;
 use App\Models\Faculty;
 use App\Models\GeneralInformation;
@@ -71,7 +72,31 @@ class FrontendController extends Controller
 
     public function documentsInformation()
     {
-        return view('documents-information');
+        $documentInformation = DocumentInformation::latest()->get();
+        return view('documents-information', compact('documentInformation'));
+    }
+
+    public function documentsInformationDownload($id, $fileIndex)
+    {
+        $documentInformation = DocumentInformation::findOrFail($id);
+        $files = json_decode($documentInformation->file, true, 512, JSON_THROW_ON_ERROR);
+
+        if (!isset($files[$fileIndex])) {
+            return redirect()->back()->with('error', 'File not found.');
+        }
+
+        $relativePath = ltrim(parse_url($files[$fileIndex], PHP_URL_PATH), '/storage/');
+
+        $storagePath = storage_path('app/public/' . $relativePath);
+
+        if (!file_exists($storagePath)) {
+            return redirect()->back()->with('error', 'File not found on disk.');
+        }
+
+        return response()->file($storagePath, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . basename($storagePath) . '"'
+        ]);
     }
 
     public function event()

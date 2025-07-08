@@ -5,6 +5,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CircularController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentInformationController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FrontendController;
@@ -34,6 +35,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('academic', 'academic')->name('frontend.academic');
     Route::get('gallery', 'gallery')->name('frontend.gallery');
     Route::get('documentsInformation', 'documentsInformation')->name('frontend.documents-information');
+    Route::get('documentsInformationDownload/{id}/{fileIndex}', 'documentsInformationDownload')->name('documentsInformation.download');
     Route::get('event', 'event')->name('frontend.event');
     Route::get('magazine', 'magazine')->name('frontend.magazine');
     Route::get('/searchMagazines',  'searchMagazine')->name('magazine.index');
@@ -116,6 +118,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('admin.general-information.edit');
         Route::put('update/{id}', 'update')->name('admin.general-information.update');
         Route::delete('delete/{id}', 'destroy')->name('admin.general-information.delete');
+    });
+
+    Route::prefix('document-information')->controller(DocumentInformationController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.document-information.index');
+        Route::get('create', 'create')->name('admin.document-information.create');
+        Route::post('store', 'store')->name('admin.document-information.store');
+        Route::get('edit/{id}', 'edit')->name('admin.document-information.edit');
+        Route::put('update/{id}', 'update')->name('admin.document-information.update');
+        Route::delete('delete/{id}', 'destroy')->name('admin.document-information.delete');
     });
 
     Route::prefix('circular')->controller(CircularController::class)->group(function () {
