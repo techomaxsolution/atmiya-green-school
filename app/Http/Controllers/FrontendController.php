@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\Faculty;
 use App\Models\GeneralInformation;
 use App\Models\Magazine;
+use App\Models\TeachingStaff;
 use App\Models\Testimonials;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -185,7 +186,8 @@ class FrontendController extends Controller
 
     public function teachingStaff()
     {
-        return view('teachingstaff');
+        $teachingStaff = TeachingStaff::latest()->get();
+        return view('teachingstaff', compact('teachingStaff'));
     }
 
     public function generalInformation()

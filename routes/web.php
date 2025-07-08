@@ -11,6 +11,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\TeachingStaffController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -124,6 +125,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('admin.circular.edit');
         Route::put('/update/{id}', 'update')->name('admin.circular.update');
         Route::delete('/delete/{id}', 'destroy')->name('admin.circular.delete');
+    });
+
+    Route::prefix('teaching-staff')->controller(TeachingStaffController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.teaching-staff.index');
+        Route::get('create', 'create')->name('admin.teaching-staff.create');
+        Route::post('store', 'store')->name('admin.teaching-staff.store');
+        Route::get('edit/{id}', 'edit')->name('admin.teaching-staff.edit');
+        Route::put('update/{id}', 'update')->name('admin.teaching-staff.update');
+        Route::delete('delete/{id}', 'destroy')->name('admin.teaching-staff.delete');
     });
 
     Route::prefix('magazine')->controller(MagazineController::class)->group(function () {
