@@ -32,7 +32,7 @@
                                                             Infrastructure</a></li>
                                                     <li class="level3">
                                                         @php($mandatoryPublicDisclosure = App\Models\MandatoryPublicDisclosure::first())
-                                                        <a href="{{ asset(json_decode($mandatoryPublicDisclosure->file, false, 512, JSON_THROW_ON_ERROR)) }}" target="_blank">
+                                                        <a href="{{ isset($mandatoryPublicDisclosure->file) ? asset(json_decode($mandatoryPublicDisclosure->file, false, 512, JSON_THROW_ON_ERROR)) : '#' }}" target="_blank">
                                                             <span>■</span>
                                                             Mandatory Public Disclosure
                                                         </a>
