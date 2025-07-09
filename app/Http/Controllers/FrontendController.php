@@ -63,7 +63,7 @@ class FrontendController extends Controller
 
     public function academic()
     {
-        $academics = Academic::latest()->get();
+        $academics = Academic::get();
         return view('academic', compact('academics'));
     }
 
@@ -98,7 +98,7 @@ class FrontendController extends Controller
 
     public function documentsInformation()
     {
-        $documentInformation = DocumentInformation::latest()->get();
+        $documentInformation = DocumentInformation::get();
         return view('documents-information', compact('documentInformation'));
     }
 
@@ -237,19 +237,19 @@ class FrontendController extends Controller
 
     public function teachingStaff()
     {
-        $teachingStaff = TeachingStaff::latest()->get();
+        $teachingStaff = TeachingStaff::get();
         return view('teachingstaff', compact('teachingStaff'));
     }
 
     public function generalInformation()
     {
-        $generalInformation = GeneralInformation::latest()->get();
+        $generalInformation = GeneralInformation::get();
         return view('generalinformationofschool', compact('generalInformation'));
     }
 
     public function schoolinfrastructure()
     {
-        $schoolInfrastructure = SchoolInfrastructure::latest()->get();
+        $schoolInfrastructure = SchoolInfrastructure::get();
         return view('schoolinfrastructure', compact('schoolInfrastructure'));
     }
 
