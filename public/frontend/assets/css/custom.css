@@ -2497,6 +2497,11 @@ _______________________________________________________*/
     position: relative;
     border-radius: 20px;
 }
+
+.blog-item {
+    box-shadow: 2px 2px 14px #7b7b7b40;
+}
+
 .blog-item .blog-media img {
     transition: all 0.4s ease-in-out 0s;
     -webkit-transition: all 0.4s ease-in-out 0s;
