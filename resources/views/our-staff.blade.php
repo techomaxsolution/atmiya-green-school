@@ -146,13 +146,14 @@
                                     <div class="staff-contant">
                                         <div class="staff-title">
                                             <h3>
-                                                <a href="#">{{ $faculty->name }}</a>
+                                                <a href="#">{{ $faculty->name ?? "-"  }}</a>
                                             </h3>
-                                            <h5 class="desgi">{{ $faculty->designation ?? $faculty->department }}</h5>
+                                            <h5 class="desgi">{{ $faculty->designation ?? "-" }}</h5>
                                             <span></span>
+                                            <h5 class="desgi">{{ $faculty->department ?? "-" }}</h5>
                                         </div>
                                         <div class="staff-desc">
-                                            <p>{{ $faculty->description }}</p>
+                                            <p>{{ $faculty->description ?? "-" }}</p>
                                         </div>
 {{--                                        <div class="ptb-30 social">--}}
 {{--                                            <div class="footer_social align-center">--}}
