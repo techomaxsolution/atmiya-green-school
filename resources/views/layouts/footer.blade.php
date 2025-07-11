@@ -121,10 +121,12 @@
         <hr>
         <div class="footer-bottom ">
             <div class="row">
-                <div class="col-lg-6 col-12 mb-30">
-                    <div class="copy-right ">Copyright © 2019 <a href="#"> Atmiya Green School </a> All Rights Reserved </div>
+                <div class="col-lg-7 col-12 mb-30">
+                    <div class="copy-right">
+                        Copyright © 2019 to {{ \Carbon\Carbon::now()->format('Y') }} <a href="https://www.atmiyagreenschool.com">Atmiya Green School</a>, All Rights Reserved | Designed and Developed by <a href="https://www.techomaxsolution.com">Techomax Solution</a>
+                    </div>
                 </div>
-                <div class="col-lg-6 col-12 mb-30">
+                <div class="col-lg-5 col-12 mb-30">
                     <div class="footer_social center-sm">
                         <ul class="social-icon">
                             <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
