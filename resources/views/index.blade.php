@@ -365,7 +365,7 @@
     </section>
 
     <!--- Testimonials -->
-    <section class="client-bg ptb-95" id="sub-banner">
+    <section class="client-bg ptb-95" id="sub-banner" style="padding-bottom: 57px;">
         <div class="top-shadow">
             <img alt="Atmiya" src="{{asset('frontend/assets/images/top-shadow.png')}}">
         </div>
