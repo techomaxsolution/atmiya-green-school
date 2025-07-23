@@ -6,6 +6,8 @@ use App\Models\Faculty;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FacultyController extends Controller
 {
@@ -41,18 +43,20 @@ class FacultyController extends Controller
             'designation' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ]);
-        $filename = null;
-        if($request->hasfile('profile')){
+        $filePath = null;
+        if ($request->hasfile('profile')) {
             $file = $request->file('profile');
-            $cleanname = time() . '-' . str_replace(' ', '-', $file->getClientOriginalName());
-            $filename = 'uploads/faculty' . '/' . $cleanname;
-            $file->move(public_path('uploads/faculty'), $cleanname);
+            $originalName = $file->getClientOriginalName();
+            $nameWithoutSpaces = strtolower(str_replace(' ', '_', pathinfo($originalName, PATHINFO_FILENAME)));
+            $fileName = $nameWithoutSpaces . '_' . time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/uploads/faculty', $fileName);
+            $filePath = Storage::url($path);
         }
 
         Faculty::create([
             'department_id' => $request->department_id,
             'name' => $request->name,
-            'profile' => $filename,
+            'profile' => $filePath,
             'designation' => $request->designation,
             'description' => $request->description,
         ]);

@@ -52,7 +52,7 @@
                             @forelse($activity as $index => $item)
                             <tr>
                               <td>{{ $index + 1 }}</td>
-                              <td>{{$item->category->activity_category_name }}</td>
+                              <td>{{ $item->category->activity_category_name ?? '-' }}</td>
                               <td>{{$item->activity_name }}</td>
                               <td>{{$item->activity_date }}</td>
 

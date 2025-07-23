@@ -3,9 +3,9 @@
 use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AdmissionProcessController;
 use App\Http\Controllers\CircularController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentInformationController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\EventController;
@@ -15,9 +15,10 @@ use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\MandatoryPublicDisclosureController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SchoolInfrastructureController;
+use App\Http\Controllers\SliderImageController;
 use App\Http\Controllers\TeachingStaffController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +30,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('admission', 'admin')->name('frontend.admin');
+    Route::get('admission-process', 'admissionProcess')->name('frontend.admission-process');
     Route::get('about', 'about')->name('frontend.about');
     Route::get('contact', 'contact')->name('frontend.contact');
     Route::get('academic', 'academic')->name('frontend.academic');
@@ -42,8 +42,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('documentsInformationDownload/{id}/{fileIndex}', 'documentsInformationDownload')->name('documentsInformation.download');
     Route::get('event', 'event')->name('frontend.event');
     Route::get('magazine', 'magazine')->name('frontend.magazine');
-    Route::get('/searchMagazines',  'searchMagazine')->name('magazine.index');
-
+    Route::get('/searchMagazines', 'searchMagazine')->name('magazine.index');
     Route::get('download/{id}/{fileIndex}', 'download')->name('magazine.download');
     Route::get('circular', 'circular')->name('frontend.circular');
     Route::get('CircularDownload/{id}/{fileIndex}', 'circularDownload')->name('circular.download');
@@ -52,13 +51,14 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('teachingStaff', 'teachingStaff')->name('frontend.teaching_staff');
     Route::get('generalInformation', 'generalInformation')->name('frontend.generalInformation');
     Route::get('schoolInfrastructure', 'schoolInfrastructure')->name('frontend.schoolInfrastructure');
-
 });
 
+Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 //Route::get('/', function () {
 //    return view('index');
 //});
+
 Route::get('/flipbook/yearly-planner', function () {
     return view('flipbook.yearly_planner');
 })->name('flipbook.yearly_planner');
@@ -68,9 +68,7 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->na
 
 //Route::get('/', [App\Http\Controllers\SettingController::class, 'index'])->name('admin.setting.index');
 
-
 Route::prefix('admin')->middleware(['auth'])->group(function () {
-
     Route::controller(App\Http\Controllers\AuthController::class)->group(function () {
         Route::get('/dashboard', 'dash')->name('admin.dashboard');
         Route::get('dashboard-data', 'dashboard')->name('dashboard.data');
@@ -185,24 +183,16 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::prefix('contact')->controller(ContactController::class)->group(function () {
         Route::get('/', 'index')->name('admin.contact.index');
-        Route::post('/store', 'store')->name('admin.contact.store');
         Route::delete('/delete/{id}', 'destroy')->name('admin.contact.delete');
-
     });
 
     Route::prefix('enquiry')->controller(EnquiryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.enquiry.index');
         Route::post('/store', 'store')->name('admin.enquiry.store');
         Route::delete('/delete/{id}', 'destroy')->name('admin.enquiry.delete');
-
-
         Route::get('replyForm/{id}', 'replyForm')->name('enquiry.replyForm');
         Route::post('respond/{id}', 'respondToEnquiry')->name('enquiry.respondToContact');
-
-
-
     });
-
 
     Route::get('notification/read/{id}', [NotificationController::class, 'markAsReadAndRedirect'])->name('notification.read');
 
@@ -224,5 +214,19 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::delete('/delete/{id}', 'destroy')->name('admin.activity.delete');
     });
 
-});
+    Route::prefix('slider-images')->controller(SliderImageController::class)->group(function () {
+        Route::get('banner-images', 'bannerImagesIndex')->name('admin.slider-images.banner-images');
+        Route::get('school-images', 'schoolImagesIndex')->name('admin.slider-images.school-images');
+        Route::get('banner-image-create', 'bannerImageCreate')->name('admin.slider-images.banner-images-create');
+        Route::get('school-image-create', 'schoolImageCreate')->name('admin.slider-images.school-images-create');
+        Route::get('banner-image-edit/{id}', 'bannerImageEdit')->name('admin.slider-images.banner-images-edit');
+        Route::get('school-image-edit/{id}', 'schoolImageEdit')->name('admin.slider-images.school-images-edit');
+        Route::post('slider-image-store', 'sliderImageStore')->name('admin.slider-images.store');
+        Route::delete('slider-image-delete/{id}', 'sliderImageDestroy')->name('admin.slider-images.delete');
+    });
 
+    Route::prefix('admission-process')->controller(AdmissionProcessController::class)->group(function () {
+        Route::get('edit', 'edit')->name('admin.admission-process.edit');
+        Route::post('update', 'update')->name('admin.admission-process.update');
+    });
+});

@@ -32,7 +32,7 @@
                                 <img src="{{asset('frontend/assets/images/call.png')}}" alt="">
                             </div>
                             <div class="call-detail">
-                                <div class="ser-title">+ 91 971499 4545 </div>
+                                <div class="ser-title">+91 97149 94545</div>
                                 <div class="ser-subtitle">atmiyagreenschool.com</div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 f-col ">
+                <div class="col-lg-6 f-col ">
                     <div class="f-logo">
                         <a href="{{route('home')}}" class="">
                             <img src="{{asset('frontend/assets/images/logo.png')}}" alt="Atmiya">
@@ -75,45 +75,44 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 footer-middle-right">
+                <div class="col-lg-6 footer-middle-right">
                     <div class="row">
-                        <div class="col-lg-4 f-col">
+                        <div class="col-lg-12 f-col">
                             <div class="footer-static-block"> <span class="opener plus"></span>
-                                <h3 class="title">Quick Link </h3>
+                                <h3 class="title">About Us</h3>
                                 <ul class="footer-block-contant link">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="{{route('frontend.about')}}">Curriculum</a></li>
-                                    <li><a href="{{route('frontend.event')}}">Upcoming Events</a></li>
-                                    <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('frontend.about') }}">Curriculum</a></li>
+                                    {{--<li><a href="{{  route('frontend.event') }}">Upcoming Events</a></li>--}}
+                                    <li><a href="{{ route('frontend.contact') }}">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 f-col">
-                            <div class="footer-static-block"> <span class="opener plus"></span>
-                                <h3 class="title">About Our</h3>
-                                <ul class="footer-block-contant link">
-                                    <li><a href="{{route('frontend.event')}}"> History</a></li>
-                                    <li><a href="{{route('frontend.about')}}"> Vision and Mission</a></li>
-                                    <li><a href="#"> Goal and Objective</a></li>
-                                    <li><a href="{{route('frontend.staff')}}"> Our Staff</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 f-col news">
-                            <div class="footer-static-block">
-                                <h3 class="title">Subscribe Newsletter</h3>
-
-                                <div class="newsletter-inner center-sm">
-                                    <form>
-                                        <div class="newsletter-box">
-                                            <input type="text" placeholder="Name">
-                                            <input type="email" placeholder="Email">
-                                            <button title="Subscribe" class="btn-color">Subscribe</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        {{--<div class="col-lg-4 f-col">--}}
+                        {{--    <div class="footer-static-block"> <span class="opener plus"></span>--}}
+                        {{--        <h3 class="title">About Our</h3>--}}
+                        {{--        <ul class="footer-block-contant link">--}}
+                        {{--            <li><a href="{{route('frontend.event')}}"> History</a></li>--}}
+                        {{--            <li><a href="{{route('frontend.about')}}"> Vision and Mission</a></li>--}}
+                        {{--            <li><a href="#"> Goal and Objective</a></li>--}}
+                        {{--            <li><a href="{{route('frontend.staff')}}"> Our Staff</a></li>--}}
+                        {{--        </ul>--}}
+                        {{--    </div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-lg-4 f-col news">--}}
+                        {{--    <div class="footer-static-block">--}}
+                        {{--        <h3 class="title">Subscribe Newsletter</h3>--}}
+                        {{--        <div class="newsletter-inner center-sm">--}}
+                        {{--            <form>--}}
+                        {{--                <div class="newsletter-box">--}}
+                        {{--                    <input type="text" placeholder="Name">--}}
+                        {{--                    <input type="email" placeholder="Email">--}}
+                        {{--                    <button title="Subscribe" class="btn-color">Subscribe</button>--}}
+                        {{--                </div>--}}
+                        {{--            </form>--}}
+                        {{--        </div>--}}
+                        {{--    </div>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>
@@ -128,11 +127,54 @@
                 </div>
                 <div class="col-lg-5 col-12 mb-30">
                     <div class="footer_social center-sm">
+                        <style>
+                            .social-icon {
+                                list-style: none;
+                                padding: 0;
+                                display: flex;
+                                gap: 10px;
+                            }
+
+                            .social-icon li a {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 40px;
+                                height: 40px;
+                                background-color: #000;
+                                border-radius: 50%;
+                                border: 1px solid #fff;
+                                overflow: hidden;
+                                text-decoration: none;
+                            }
+
+                            .social-icon li a i {
+                                color: #fff;
+                                font-size: 20px;
+                            }
+
+                            .social-icon li a.threads-icon img {
+                                width: 20px;
+                                height: 20px;
+                                object-fit: contain;
+                            }
+                        </style>
                         <ul class="social-icon">
-                            <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
-                            <li><a title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
-                            <li><a title="Youtube" class="youtube"><i class="fa fa-youtube-square"> </i></a></li>
-                            <li><a title="Instagram" class="instagram"><i class="fa fa-instagram"> </i></a></li>
+                            <li>
+                                <a title="Facebook" class="facebook" href="https://www.facebook.com/atmiya.nursery" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Instagram" class="instagram" href="https://www.instagram.com/atmiyagreenschool" target="_blank">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Threads" class="threads threads-icon" href="https://www.threads.com/@atmiyagreenschool" target="_blank">
+                                    <img src="{{ asset('frontend/assets/images/threads-icon.png') }}" alt="Threads" class="threads-img">
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

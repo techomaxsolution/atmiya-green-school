@@ -84,9 +84,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="activity_image_video">Activity Image/Video
-                                                <span style="color: red">*</span>
-                                            </label>
+                                            <label for="activity_image_video">Activity Image/Video</label>
 
                                             <input
                                                 type="file"
@@ -172,10 +170,8 @@
                     required: false,
 
                 },
-               "activity_image_video[]": {
-                    required: true,
+                "activity_image_video[]": {
                     extension: "jpg|jpeg|png|gif|mp4|svg|mov|avi|wmv",
-
                 }
             },
             messages: {
@@ -189,9 +185,8 @@
                     minlength: "Department name must be at least 2 characters long",
                     unique: "<span class='text-danger'>The Activity Category name has already been taken</span>"
                 },
-              "activity_image_video[]": {
-                    required: "Please Select a Activity image or video",
-
+                "activity_image_video[]": {
+                    extension: "Please Select a Activity image or video with correct file type",
                 },
             },
             errorClass: "text-danger",

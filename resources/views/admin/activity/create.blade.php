@@ -77,8 +77,8 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="driver_name">Activity Image/Video<span style="color: red">*</span></label>
-                                            <input type="file" class="form-control" name="activity_image_video[]" id="activity_image_video" value="{{ old('activity_image_video') }}" placeholder="Select Image or video" required multiple  accept="image/*,video/*"  />
+                                            <label for="driver_name">Activity Image/Video</label>
+                                            <input type="file" class="form-control" name="activity_image_video[]" id="activity_image_video" value="{{ old('activity_image_video') }}" placeholder="Select Image or video" multiple accept="image/*,video/*"/>
                                             @error('activity_image_video[]')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -124,9 +124,7 @@
                     required: false,
                 },
                 "activity_image_video[]": {
-                    required: true,
                     extension: "jpg|jpeg|png|gif|mp4|svg|mov|avi|wmv",
-
                 }
             },
             messages: {
@@ -140,7 +138,7 @@
                     minlength: "Activity Category name must be at least 2 characters long",
                 },
                 "activity_image_video[]": {
-                    required: "Please Select a Activity image or video",
+                    extension: "Please Select a Activity image or video with correct file type",
                 },
             },
             errorElement: 'span',

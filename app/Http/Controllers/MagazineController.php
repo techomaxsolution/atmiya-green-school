@@ -49,7 +49,7 @@ class MagazineController extends Controller
                 $originalName = $file->getClientOriginalName();
                 $nameWithoutSpaces = strtolower(str_replace(' ', '_', pathinfo($originalName, PATHINFO_FILENAME)));
                 $fileName = $nameWithoutSpaces . '_' . time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
-                $path = $file->storeAs('public/uploads', $fileName);
+                $path = $file->storeAs('public/uploads/magazine', $fileName);
                 $files[] = Storage::url($path);
             }
         }

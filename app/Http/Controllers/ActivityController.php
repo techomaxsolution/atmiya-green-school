@@ -42,7 +42,7 @@ class ActivityController extends Controller
             'activity_category_id' => 'required',
             'activity_name' => 'required|unique:activities,activity_name',
             'activity_date' => 'nullable|date',
-            'activity_image_video' => 'required|array',
+            'activity_image_video' => 'array',
             'activity_image_video.*' => 'file|mimes:jpeg,png,jpg,gif,svg,mp4,mov,avi,wmv|max:51200',
         ]);
 

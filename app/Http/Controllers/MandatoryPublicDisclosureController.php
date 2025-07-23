@@ -65,6 +65,6 @@ class MandatoryPublicDisclosureController extends Controller
         }
 
         Session::flash('error', 'Mandatory Public Disclosure saving error!');
-        return redirect()->route('admin.mandatory-public-disclosure.edit', $id);
+        return redirect()->route('admin.mandatory-public-disclosure.edit', $request->mandatory_public_disclosure_id);
     }
 }

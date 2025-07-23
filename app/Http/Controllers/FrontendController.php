@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Academic;
 use App\Models\Activity;
 use App\Models\ActivityCategory;
+use App\Models\AdmissionProcess;
 use App\Models\Circular;
 use App\Models\DocumentInformation;
 use App\Models\Event;
@@ -12,6 +13,7 @@ use App\Models\Faculty;
 use App\Models\GeneralInformation;
 use App\Models\Magazine;
 use App\Models\SchoolInfrastructure;
+use App\Models\SliderImage;
 use App\Models\TeachingStaff;
 use App\Models\Testimonials;
 use Carbon\Carbon;
@@ -45,8 +47,9 @@ class FrontendController extends Controller
             ->get();
         $testimonials= Testimonials::get();
 
+        $sliderImages = SliderImage::get();
 
-        return view('index', compact('activities','club','testimonials'));
+        return view('index', compact('activities', 'club', 'testimonials', 'sliderImages'));
     }
 
     public function about()
@@ -253,7 +256,9 @@ class FrontendController extends Controller
         return view('schoolinfrastructure', compact('schoolInfrastructure'));
     }
 
-    public function admin(){
-        return view('admin');
+    public function admissionProcess()
+    {
+        $admissionProcess = AdmissionProcess::first();
+        return view('admission-process', compact('admissionProcess'));
     }
 }

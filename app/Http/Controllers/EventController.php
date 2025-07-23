@@ -76,7 +76,7 @@ class EventController extends Controller
 
             foreach ($request->file('event_images') as $file) {
                 $fileName = $titleSlug . '_' . time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
-                $path = $file->storeAs('public/uploads', $fileName);
+                $path = $file->storeAs('public/uploads/event', $fileName);
                 $images[] = Storage::url($path); // e.g., /storage/uploads/filename.jpg
             }
         }

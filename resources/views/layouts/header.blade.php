@@ -31,8 +31,11 @@
                                                     <li class="level3"><a href="{{route('frontend.schoolInfrastructure')}}"><span>■</span>School
                                                             Infrastructure</a></li>
                                                     <li class="level3">
-                                                        @php($mandatoryPublicDisclosure = App\Models\MandatoryPublicDisclosure::first())
-                                                        <a href="{{ isset($mandatoryPublicDisclosure->file) ? asset(json_decode($mandatoryPublicDisclosure->file, false, 512, JSON_THROW_ON_ERROR)) : '#' }}" target="_blank">
+                                                        @php
+                                                            $mandatoryPublicDisclosure = App\Models\MandatoryPublicDisclosure::first();
+                                                            $mandatoryPublicDisclosureFile = isset($mandatoryPublicDisclosure->file) ? json_decode($mandatoryPublicDisclosure->file, false, 512, JSON_THROW_ON_ERROR) : 'frontend/assets/cbseinfo/documentsandInformation/mandatorypublicdisclosure.pdf';
+                                                        @endphp
+                                                        <a href="{{ asset($mandatoryPublicDisclosureFile) }}" target="_blank">
                                                             <span>■</span>
                                                             Mandatory Public Disclosure
                                                         </a>
@@ -43,8 +46,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="level"><a href="#" class="page-scroll">Facility</a></li>
-                            <li class="level"><a href="{{route('frontend.admin')}}" class="page-scroll">Admissions </a></li>
+                            {{--<li class="level"><a href="#" class="page-scroll">Facility</a></li>--}}
+                            <li class="level"><a href="{{route('frontend.admission-process')}}" class="page-scroll">Admissions </a></li>
                             <!-- <li class="level"><a href="contact.html" class="page-scroll">Contact Us</a></li> -->
                             <li class="level dropdown"> <span class="opener plus"></span>
                                 <a href="{{route('frontend.gallery')}}" class="page-scroll">Gallery</a>
@@ -70,7 +73,7 @@
                     <div class=" header-right-link" style="margin-top: 45px">
                         <ul>
                             <li>
-                                <a href="#"><span class="fa fa-phone"></span> 97149 94545</a>
+                                <a href="tel:+919714994545"><span class="fa fa-phone"></span>&nbsp;+91 9714994545</a>
                             </li>
                             <li class="side-toggle">
                                 <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i

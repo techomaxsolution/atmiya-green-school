@@ -44,8 +44,8 @@
                             <img src="{{asset('frontend/assets/images/call.png')}}" alt="">
                         </div>
                         <div class="call-detail">
-                            <div class="ser-subtitle">+ 91 971499 4544</div>
-                            <div class="ser-subtitle">+ 91 971499 4545</div>
+                            <div class="ser-subtitle">+91 97149 94544</div>
+                            <div class="ser-subtitle">+91 97149 94545</div>
                             <div class="ser-subtitle">atmiya_school@yahoo.com</div>
                             <div class="ser-subtitle"><a href="http://atmiyagreenschool.com/schoolinfrastructure.html">atmiyagreenschool.com</a></div>
                         </div>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="main-form">
-                <form action="{{route('admin.contact.store')}}" method="POST" name="contactForm" id="contactForm">
+                <form action="{{route('contact.store')}}" method="POST" name="contactForm" id="contactForm">
                     @csrf
                     @if(session('success'))
                         <div class="alert alert-success" id="success-alert">

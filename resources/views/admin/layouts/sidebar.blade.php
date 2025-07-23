@@ -82,6 +82,30 @@
                     </li>
 
                     <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#slider-image">
+                            <i class="fas fa-images"></i>
+                            <p>Slider Images</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="slider-image">
+                            <ul class="nav nav-collapse">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.slider-images.banner-images') }}">
+                                        <i class="fas fa-image"></i>
+                                        <p>Banner Images</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.slider-images.school-images') }}">
+                                        <i class="fas fa-image"></i>
+                                        <p>School Images</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('admin.testimonial.index') }}">
                             <i class="fas fa-user-check"></i>
                             <p>Testimonial</p>
@@ -176,6 +200,14 @@
                     {{--                            <p>Settings</p>--}}
                     {{--                        </a>--}}
                     {{--                    </li>--}}
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.admission-process.edit') }}">
+                            <i class="fas fa-file-pdf"></i>
+                            <p>Admission Process</p>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
