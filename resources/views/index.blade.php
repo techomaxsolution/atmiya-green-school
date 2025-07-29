@@ -244,24 +244,55 @@
                         </div>
                     </div>
                 </div>
-                <div class="row m-0">
+                <div class="row">
                     @foreach($activities as $activity)
-                        <div class="col-lg-6 col-md-6 col-12 p-0 mb-xs-30 service-box">
-                            <div class="feature-box feature-box-1">
-                                @if($activity->activity_image_video)
-                                    <div class="feature-icon11">
-                                        @foreach(json_decode($activity->activity_image_video) as $image)
-                                            <img src="{{ $image }}" height="369px" width="320px" alt="Event Image"/>
-                                        @endforeach
+                        <div class="col-lg-4 col-md-6 col-12 mb-4">
+                            <div class="blog-item pt-3 shadow rounded bg-white">
+                                <div class="blog-media position-relative">
+                                    <!-- Swiper -->
+                                    <div class="swiper clubSwiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach(json_decode($activity->activity_image_video, false, 512, JSON_THROW_ON_ERROR) as $media)
+                                                @php
+                                                    $extension = pathinfo($media, PATHINFO_EXTENSION);
+                                                    $isVideo = in_array(strtolower($extension), ['mp4', 'webm', 'ogg']);
+                                                @endphp
+                                                <div class="swiper-slide">
+                                                    @if($isVideo)
+                                                        <video width="100%" height="auto" controls>
+                                                            <source src="{{ $media }}" type="video/{{ $extension }}">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    @else
+                                                        <img src="{{ $media }}" alt="Event Media" style="width: 100%; height: 350px; object-fit: cover;"/>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <!-- Swiper Controls -->
+                                        <div class="swiper-button-next" style="color: #fff"></div>
+                                        <div class="swiper-button-prev" style="color: #fff"></div>
+                                        <div class="swiper-pagination" style="color: #fff"></div>
                                     </div>
-                                @endif
-                                <div class="feature-detail">
-                                    <div class="ser-title">{{$activity->activity_name}}</div>
+                                    <!-- Date Overlay -->
+                                    <div class="post-datemonth position-absolute bg-dark text-white p-2 rounded" style="top: 20px; left: 20px;">
+                                        <span class="month">{{ \Carbon\Carbon::parse($activity->activity_date)->format('F') }}</span>
+                                        <span class="date"><b>{{ \Carbon\Carbon::parse($activity->activity_date)->format('j') }}</b></span>
+                                    </div>
+                                    <div class="blog-effect"></div>
+                                </div>
+                                <div class="blog-detail mt-3">
+                                    <div class="blog-detail-inner">
+                                        <div class="blog-contant">
+                                            <div class="blog-title">
+                                                <h3><a href="#">{{ $activity->activity_name }}</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
@@ -285,60 +316,55 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            @foreach($club as $clubAct)
-                                <div class="col-md-6 mb-4">
-                                    <div class="blog-item">
-                                        <div class="blog-media position-relative">
-                                            <!-- Swiper -->
-                                            <div class="swiper clubSwiper">
-                                                <div class="swiper-wrapper">
-                                                    @foreach(json_decode($clubAct->activity_image_video) as $media)
-                                                        @php
-                                                            $extension = pathinfo($media, PATHINFO_EXTENSION);
-                                                            $isVideo = in_array(strtolower($extension), ['mp4', 'webm', 'ogg']);
-                                                        @endphp
-                                                        <div class="swiper-slide">
-                                                            @if($isVideo)
-                                                                <video width="100%" height="auto" controls>
-                                                                    <source src="{{ $media }}" type="video/{{ $extension }}">
-                                                                    Your browser does not support the video tag.
-                                                                </video>
-                                                            @else
-                                                                <img src="{{ $media }}" alt="Event Media" style="width: 100%; height: 350px; object-fit: cover;"/>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                                <!-- Swiper Controls -->
-                                                <div class="swiper-button-next" style="color: #fff"></div>
-                                                <div class="swiper-button-prev" style="color: #fff"></div>
-                                                <div class="swiper-pagination" style="color: #fff"></div>
-                                            </div>
-
-                                            <!-- Date Overlay -->
-                                            <div class="post-datemonth position-absolute bg-dark text-white p-2 rounded" style="top: 20px; left: 20px;">
-                                                <span class="month">{{ \Carbon\Carbon::parse($clubAct->activity_date)->format('F') }}</span>
-                                                <span class="date"><b>{{ \Carbon\Carbon::parse($clubAct->activity_date)->format('j') }}</b></span>
-                                            </div>
-
-                                            <div class="blog-effect"></div>
-                                        </div>
-
-                                        <div class="blog-detail mt-3">
-                                            <div class="blog-detail-inner">
-                                                <div class="blog-contant">
-                                                    <div class="blog-title">
-                                                        <h3><a href="#">{{ $clubAct->activity_name }}</a></h3>
+                    <div class="row">
+                        @foreach($club as $clubAct)
+                            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                                <div class="blog-item pt-3 shadow rounded bg-white">
+                                    <div class="blog-media position-relative">
+                                        <!-- Swiper -->
+                                        <div class="swiper clubSwiper">
+                                            <div class="swiper-wrapper">
+                                                @foreach(json_decode($clubAct->activity_image_video, false, 512, JSON_THROW_ON_ERROR) as $media)
+                                                    @php
+                                                        $extension = pathinfo($media, PATHINFO_EXTENSION);
+                                                        $isVideo = in_array(strtolower($extension), ['mp4', 'webm', 'ogg']);
+                                                    @endphp
+                                                    <div class="swiper-slide">
+                                                        @if($isVideo)
+                                                            <video width="100%" height="auto" controls>
+                                                                <source src="{{ $media }}" type="video/{{ $extension }}">
+                                                                Your browser does not support the video tag.
+                                                            </video>
+                                                        @else
+                                                            <img src="{{ $media }}" alt="Event Media" style="width: 100%; height: 350px; object-fit: cover;"/>
+                                                        @endif
                                                     </div>
+                                                @endforeach
+                                            </div>
+                                            <!-- Swiper Controls -->
+                                            <div class="swiper-button-next" style="color: #fff"></div>
+                                            <div class="swiper-button-prev" style="color: #fff"></div>
+                                            <div class="swiper-pagination" style="color: #fff"></div>
+                                        </div>
+                                        <!-- Date Overlay -->
+                                        <div class="post-datemonth position-absolute bg-dark text-white p-2 rounded" style="top: 20px; left: 20px;">
+                                            <span class="month">{{ \Carbon\Carbon::parse($clubAct->activity_date)->format('F') }}</span>
+                                            <span class="date"><b>{{ \Carbon\Carbon::parse($clubAct->activity_date)->format('j') }}</b></span>
+                                        </div>
+                                        <div class="blog-effect"></div>
+                                    </div>
+                                    <div class="blog-detail mt-3">
+                                        <div class="blog-detail-inner">
+                                            <div class="blog-contant">
+                                                <div class="blog-title">
+                                                    <h3><a href="#">{{ $clubAct->activity_name }}</a></h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
