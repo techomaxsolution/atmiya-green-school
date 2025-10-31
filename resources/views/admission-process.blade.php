@@ -41,8 +41,9 @@
                         <div class="addmision-process pt-30">
                             <div id="items">
                                 <p>
-                                    The parents are required to visit the School Admission Office, get full inquiry about the fees and curriculum, Student needs to appear entrance test, obtain the application form on non-refundable payment of Rs. 300/-, fill out the application form and submit the same along with the required documents on or before the stipulated date.
+                                    The parents are required to visit the School Admission Office, get full inquiry about the fees and curriculum, Student needs to appear entrance test, obtain the application form on non-refundable payment , fill out the application form and submit the same along with the required documents on or before the stipulated date.
                                 </p>
+                                {{-- of Rs. 300/- --}}
                                 <br>
                             </div>
                         </div>
