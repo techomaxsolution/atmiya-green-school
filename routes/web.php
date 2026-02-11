@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GeneralInformationController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\MandatoryPublicDisclosureController;
+use App\Http\Controllers\ModelBannerController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SchoolInfrastructureController;
 use App\Http\Controllers\SliderImageController;
@@ -228,5 +229,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('admission-process')->controller(AdmissionProcessController::class)->group(function () {
         Route::get('edit', 'edit')->name('admin.admission-process.edit');
         Route::post('update', 'update')->name('admin.admission-process.update');
+    });
+
+    Route::prefix('model-banner')->controller(ModelBannerController::class)->group(function () {
+        Route::get('edit', 'edit')->name('admin.model-banner.edit');
+        Route::post('update', 'update')->name('admin.model-banner.update');
     });
 });

@@ -66,6 +66,7 @@
                                 </div>
                             </li>
                             <li class="level"><a href="{{route('frontend.contact')}}" class="page-scroll">Contact us</a></li>
+                            <li class="level"><a href="{{route('frontend.event')}}" class="page-scroll">Upcoming Events</a></li>
                         </ul>
                     </div>
                 </div>

@@ -207,6 +207,12 @@
                             <p>Admission Process</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.model-banner.edit') }}">
+                            <i class="fas fa-file-pdf"></i>
+                            <p>Model Banner</p>
+                        </a>
+                    </li>
 
                 </ul>
             </div>

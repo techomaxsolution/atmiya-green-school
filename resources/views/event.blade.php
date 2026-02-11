@@ -155,6 +155,7 @@
 
                 <h2 class="text-center mb-4">Upcoming Events</h2>
                 <div class="row mb-4">
+                    {{-- @dd($upcomingEvents) --}}
                     @forelse($upcomingEvents as $event)
                         <div class="col-lg-4 col-md-6 col-12 mb-4">
                             <div class="blog-item p-3 shadow rounded bg-white">
@@ -168,7 +169,7 @@
                                         @endphp
                                         @foreach($upcomingImages as $upcomingImage)
                                             <div class="swiper-slide">
-                                                <img src="{{ $upcomingImage }}" class="img-fluid rounded mb-2" alt="Event Image" style="height: 300px; width: 100%; object-fit: cover;">
+                                                <img src="{{ asset($upcomingImage) }}" class="img-fluid rounded mb-2" alt="Event Image" style="height: 300px; width: 100%; object-fit: cover;">
                                             </div>
                                         @endforeach
                                     </div>

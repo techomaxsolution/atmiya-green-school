@@ -137,6 +137,7 @@ class FrontendController extends Controller
             ->orderBy('event_date', 'asc')
             ->get();
 
+
         $pastEvents = Event::where('event_date', '<', $now)
             ->orderBy('event_date', 'desc')
             ->get();
