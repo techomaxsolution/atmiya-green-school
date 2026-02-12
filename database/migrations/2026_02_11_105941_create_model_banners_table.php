@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('model_banners', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->default(null);
-            $table->enum('status',[0,1])->default(0);
+            $table->string('image')->nullable();
+            $table->enum('status',[0,1])->default(0)->nullable();
             $table->timestamps();
         });
     }
