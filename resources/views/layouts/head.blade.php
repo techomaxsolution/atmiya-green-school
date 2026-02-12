@@ -38,4 +38,6 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{asset('frontend/assets/images/apple-touch-icon-114x114.png')}}">
 
 
+
+
 </head>

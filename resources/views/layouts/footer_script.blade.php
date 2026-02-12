@@ -21,6 +21,7 @@
 <script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script>
 
 <!-- Your other plugins and custom.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/fotorama.js') }}"></script>

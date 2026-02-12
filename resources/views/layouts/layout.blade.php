@@ -39,7 +39,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{asset('frontend/assets/images/apple-touch-icon-114x114.png')}}">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    @yield("style-css")
 </head>
 
 <body class="homepage home">

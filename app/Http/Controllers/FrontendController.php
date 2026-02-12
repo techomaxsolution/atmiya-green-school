@@ -12,6 +12,7 @@ use App\Models\Event;
 use App\Models\Faculty;
 use App\Models\GeneralInformation;
 use App\Models\Magazine;
+use App\Models\ModelBanner;
 use App\Models\SchoolInfrastructure;
 use App\Models\SliderImage;
 use App\Models\TeachingStaff;
@@ -49,7 +50,9 @@ class FrontendController extends Controller
 
         $sliderImages = SliderImage::get();
 
-        return view('index', compact('activities', 'club', 'testimonials', 'sliderImages'));
+        $modelBanner = ModelBanner::first();
+
+        return view('index', compact('activities', 'club', 'testimonials', 'sliderImages','modelBanner'));
     }
 
     public function about()
