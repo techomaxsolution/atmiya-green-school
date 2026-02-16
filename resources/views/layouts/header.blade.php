@@ -9,7 +9,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-9 menu-width position-initial">
+                <div class="col-xl-9 col-lg-10 menu-width position-initial">
                     <div id="menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="{{route('home')}}" class="page-scroll">Home</a></li>
@@ -70,7 +70,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-6 col-7">
+                <div class="col-xl-2 col-lg-1 col-md-6 col-7">
                     <div class=" header-right-link" style="margin-top: 45px">
                         <ul>
                             <li>

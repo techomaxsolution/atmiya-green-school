@@ -606,7 +606,7 @@ header#header.header-fixed {
 /* Navigation Menu Style */
 
 .navbar-nav > li > a {
-    padding: 55px 18px;
+    padding: 55px 8px;
     display: inline-block;
     text-transform: uppercase;
     font-weight: 600;

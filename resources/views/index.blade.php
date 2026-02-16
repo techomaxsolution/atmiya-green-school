@@ -14,7 +14,13 @@
                     transition: opacity 0.4s ease, visibility 0.4s ease;
                     z-index: 99999; /* higher than bootstrap */
                 }
-
+                .custom-modal-content  img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 90vh;
+                    object-fit: contain;
+                    border-radius: 10px;
+                }
                 .custom-modal.active {
                     opacity: 1;
                     visibility: visible;
